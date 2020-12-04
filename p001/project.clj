@@ -7,4 +7,5 @@
                  [org.clojure/math.combinatorics "0.1.6"]
                  ]
   :main p001.core
+  :aot [p001.core]
   :repl-options {:init-ns p001.core})

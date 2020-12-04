@@ -1,4 +1,5 @@
-(ns p001.core)
+(ns p001.core
+  (:gen-class))
 
 ;  Specifically, they need you to find the two entries that sum to 2020 and then multiply those two numbers together.
 ;  In your expense report, what is the product of the three entries that sum to 2020?
