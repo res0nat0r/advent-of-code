@@ -19,5 +19,11 @@ and so on until you go past the bottom of the map.
 (def input
     (map #(str/split % #" ") (str/split (slurp "resources/input.txt") #"\n")))
 
+(def length (count (first (first input))))
+
+(defn right-3-down-1 [line offset]
+  (nth line (+ 3 offset)))
+
+
 (defn -main [& _]
-)
+(println length))
