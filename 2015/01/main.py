@@ -37,18 +37,19 @@ print(floor)
 # instructions has position 1, the second character has position 2, and so on.
 
 with open("data/input.txt") as f:
-    floor = 1
-    counter = 1
+    total = 0
+    pos = 1
 
     for i in f.read():
-        if floor <= 0:
+        if i == "(":
+            total += 1
+
+        elif i == ")":
+            total -= 1
+
+        if total == -1:
             break
-        else:
-            counter += 1
 
-            if i == "(":
-                floor += 1
-            else:
-                floor -= 1
+        pos += 1
 
-print(counter)
+print(pos)
