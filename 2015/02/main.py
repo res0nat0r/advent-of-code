@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # The elves are running low on wrapping paper, and so they need to submit an
-# order for more. They have a list of the dimensions (length l, width w, and height)
+# order for more. They have a list of the dimensions (length l, width w, and height h)
 # and only want to order exactly as much as they need.
 
 # Fortunately, every present is a box (a perfect right rectangular prism), which
@@ -23,18 +23,16 @@
 # All numbers in the elves' list are in feet. How many total
 # square feet of wrapping paper should they order?
 
-
 def surface_area(l: int, w: int, h: int) -> int:
     sa = (2 * l * w) + (2 * w * h) + (2 * h * l)
     return sa
 
 
 def extra(l: int, w: int, h: int) -> int:
-    sa = surface_area(l, w, h)
-    return min(sa)
+    return min([l * w, w * h, h * l])
 
 
-def total(l, w, h):
+def total(l: int, w: int, h: int) -> int:
     return surface_area(l, w, h) + extra(l, w, h)
 
 
@@ -42,11 +40,14 @@ def parse(line: str) -> tuple:
     return tuple(map(int, line.strip().split("x")))
 
 
-with open("data/input.txt", "r") as f:
-    total = 0
+def part1():
+    with open("data/input.txt", "r") as f:
+        sum = 0
 
-    for line in f:
-        lwh = parse(line)
-        total += surface_area(lwh[0], lwh[1], lwh[2])
+        for line in f:
+            l, w, h = parse(line)
+            sum += total(l, w, h)
 
-    print(total)
+        print(sum)
+
+part1()
