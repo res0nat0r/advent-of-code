@@ -40,6 +40,18 @@ def parse(line: str) -> tuple:
     return tuple(map(int, line.strip().split("x")))
 
 
+def ribbon_wrap(l: int, w: int, h: int) -> int:
+    return 2 * (l + w + h - max(l, w, h))
+
+
+def ribbon_bow(l: int, w: int, h: int) -> int:
+    return l * w * h
+
+
+def ribbon_total(l: int, w: int, h: int) -> int:
+    return ribbon_wrap(l, w, h) + ribbon_bow(l, w, h)
+
+
 def part1():
     with open("data/input.txt", "r") as f:
         sum = 0
@@ -51,4 +63,16 @@ def part1():
         print(sum)
 
 
+def part2():
+    with open("data/input.txt", "r") as f:
+        sum = 0
+
+        for line in f:
+            l, w, h = parse(line)
+            sum += ribbon_total(l, w, h)
+
+        print(sum)
+
+
 part1()
+part2()
