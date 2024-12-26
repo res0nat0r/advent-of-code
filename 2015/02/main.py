@@ -23,9 +23,9 @@
 # All numbers in the elves' list are in feet. How many total
 # square feet of wrapping paper should they order?
 
+
 def surface_area(l: int, w: int, h: int) -> int:
-    sa = (2 * l * w) + (2 * w * h) + (2 * h * l)
-    return sa
+    return (2 * l * w) + (2 * w * h) + (2 * h * l)
 
 
 def extra(l: int, w: int, h: int) -> int:
@@ -49,5 +49,6 @@ def part1():
             sum += total(l, w, h)
 
         print(sum)
+
 
 part1()
