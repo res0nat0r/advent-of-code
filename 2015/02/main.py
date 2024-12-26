@@ -26,12 +26,16 @@
 
 def surface_area(l: int, w: int, h: int) -> int:
     sa = (2 * l * w) + (2 * w * h) + (2 * h * l)
-    return sa + extra(l, w, h)
+    return sa
 
 
 def extra(l: int, w: int, h: int) -> int:
-    sa = [(2 * l * w), (2 * w * h), (2 * h * l)]
+    sa = surface_area(l, w, h)
     return min(sa)
+
+
+def total(l, w, h):
+    return surface_area(l, w, h) + extra(l, w, h)
 
 
 def parse(line: str) -> tuple:
