@@ -12,7 +12,7 @@
 # his directions are a little off, and Santa ends up visiting some houses more
 # than once. How many houses receive at least one present?
 
-stops = [0]
+stops = 0
 stops = [[stops for _ in range(8192)] for _ in range(8192)]
 total_stops = 0
 
@@ -22,24 +22,25 @@ y = 0
 with open("data/input.txt") as f:
     stops[x][y] = 1
 
-    for i in f:
-        match i:
-            case "^":
-                y += 1
-                stops[x][y] += 1
-            case ">":
-                x += 1
-                stops[x][y] += 1
-            case "v":
-                y -= 1
-                stops[x][y] += 1
-            case "<":
-                x -= 1
-                stops[x][y] += 1
+    for line in f:
+        for i in line:
+            match i:
+                case "^":
+                    y += 1
+                    stops[x][y] += 1
+                case ">":
+                    x += 1
+                    stops[x][y] += 1
+                case "v":
+                    y -= 1
+                    stops[x][y] += 1
+                case "<":
+                    x -= 1
+                    stops[x][y] += 1
 
-for x in range(8192):
-    for y in range(8192):
-        if stops[x][y] >= 1:
-            total_stops +=1
+for i in range(8192):
+    for j in range(8192):
+        if stops[i][j] >= 1:
+            total_stops += 1
 
 print(total_stops)
